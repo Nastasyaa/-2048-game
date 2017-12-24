@@ -1,0 +1,15 @@
+﻿  Game.cpp
+Game.cpp(10): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+Game.cpp(86): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+Game.cpp(84): warning C4101: row2: неиспользованная локальная переменная
+Game.cpp(84): warning C4101: col2: неиспользованная локальная переменная
+Game.cpp(243): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+Game.cpp(270): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+Game.cpp(276): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  main.cpp
+  Menu.cpp
+  Создание кода
+  All 140 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  РГЗ.vcxproj -> D:\Черкашин 3 семак\РГз Начнем\РГЗ\Release\РГЗ.exe
+  РГЗ.vcxproj -> D:\Черкашин 3 семак\РГз Начнем\РГЗ\Release\РГЗ.pdb (Full PDB)
