@@ -8,7 +8,7 @@ bool StartGame(sf::RenderWindow &window) {
 	Game game;
 	game.GenerateRandom();
 	game.GenerateRandom();
-	game.GameRes(window);
+	game.GameRes(window,0);
 
 	while (window.isOpen())
 	{
@@ -18,10 +18,14 @@ bool StartGame(sf::RenderWindow &window) {
 			   if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		if (event.type == sf::Event::Resized) {
+
+
+		if (event.type == sf::Event::Resized) { //проверяем не измен ли размер окна
 			window.setSize(sf::Vector2u(600, 500));
-			game.GameRes(window);
-		}
+			game.GameRes(window,0);
+      }
+
+
 		int menuNumb = 0;
 		if (sf::IntRect(410, 430, 300, 40).contains(sf::Mouse::getPosition(window))) {
 			menuNumb = 1;
@@ -40,9 +44,10 @@ bool StartGame(sf::RenderWindow &window) {
 		}
 
 		if ((game.UserStep(window) == 1)) {
-			game.GameRes(window);
+			game.GameRes(window,1);
 			game.GenerateRandom();
-			game.GameRes(window);
+			game.GameRes(window,1);
+			
 		}
 		int k= game.CheckGrid(window);
 		Sleep(100);

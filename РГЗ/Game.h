@@ -48,13 +48,13 @@ public:
 	void setTexts(); //устанавливаем надписи
 	void setColors(); //устанавливаем палитру цветов
 	void drawSquare(); //рисование поля для игры
-	void Score(); //количество очков
-
+	void Score(int); //количество очков
+	
 	int  UserStep(sf::RenderWindow &window); //ходы пользователя
 	int  GenerateRandom();//генерация случайных чисел
 	int  CheckGrid(sf::RenderWindow &window);//проверка сетки на остатки свободных мест
 	int  ChangeValue(int &value1, int &value2, int &value3, int &value4); //измена значений
-	void GameRes(sf::RenderWindow &window); //вывод полученного поля
+	void GameRes(sf::RenderWindow &window, int); //вывод полученного поля
 	~Game();
 };
 

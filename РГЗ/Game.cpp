@@ -17,16 +17,19 @@ Game::Game()
 			matrix[i][j] = 0;
 }
 
-void Game::Score() { 
+void Game::Score(int a) { 
 
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++)
-		 for (int t = 0; t < 7; t++)
-			
-				if (matrix[i][j] == scorespeed[t])
-				{
-					res += scorespeed[t];
-				}
+
+	if (a == 1) {
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++)
+				for (int t = 0; t < 7; t++)
+
+					if (matrix[i][j] == pow(2, (t + 1)))
+					{
+						res += scorespeed[t];
+					}
+		}
 	}
 	std::ostringstream ss;
 	ss << res;
@@ -76,6 +79,8 @@ int Game::UserStep(sf::RenderWindow &window) {
 		return 0;
 
 }
+
+
 
 int Game::GenerateRandom() {
 
@@ -211,14 +216,14 @@ int Game::ChangeValue(int &value1, int &value2, int &value3, int &value4) {
 	return 1;
 }
 
-void Game::GameRes(sf::RenderWindow &window) {
+void Game::GameRes(sf::RenderWindow &window, int a) {
 
 	sf::RectangleShape rec3[4][4];
 
 	getFiles();
 	setColors();
 	setTexts();
-
+	
 	window.clear(sf::Color::Black);
 
 	drawSquare();
@@ -282,9 +287,12 @@ void Game::GameRes(sf::RenderWindow &window) {
 		}
     dy += 85;
 	}
-	
-		Score();
-		window.draw(scoretxt);
+	if (a == 1) { //проверем были измено положение квадратов или была просто проведена какая-либо работа с окном. В этом случае звук не включается, а интерфейс поля отрисовывается
+		
+		sound1.play();
+	}
+     	Score(a);
+	    window.draw(scoretxt);
 		window.draw(rec);
 		window.draw(score);
 		window.draw(restart);
@@ -296,7 +304,7 @@ void Game::GameRes(sf::RenderWindow &window) {
 				window.draw(rec3[i][j]);
 				window.draw(texts[i][j]);
 			}
-		sound1.play();
+		
 		window.display();
 	
 }
@@ -315,7 +323,7 @@ void Game::setColors() {
 	arrayOfColors[0] = Pink = { 227, 52, 110 };
 	arrayOfColors[1] = Blue = { 22, 147, 219 };
 	arrayOfColors[2] = Yellow = { 219, 154, 55 };
-	arrayOfColors[3] = { sf::Color::White };
+	arrayOfColors[3] = { sf::Color::Blue };
 	arrayOfColors[4] = LightBlue = { 166, 184, 255 };
 	arrayOfColors[5] = LightYellow = { 255, 245, 107 };
 	arrayOfColors[6] = { sf::Color::Red };
