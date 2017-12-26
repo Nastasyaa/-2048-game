@@ -2,6 +2,7 @@
 #include "Game.h"
 #include <windows.h>
 
+
 bool StartGame(sf::RenderWindow &window) {
 	
 	Game game;
@@ -17,7 +18,10 @@ bool StartGame(sf::RenderWindow &window) {
 			   if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
+		if (event.type == sf::Event::Resized) {
+			window.setSize(sf::Vector2u(600, 500));
+			game.GameRes(window);
+		}
 		int menuNumb = 0;
 		if (sf::IntRect(410, 430, 300, 40).contains(sf::Mouse::getPosition(window))) {
 			menuNumb = 1;
@@ -34,6 +38,7 @@ bool StartGame(sf::RenderWindow &window) {
 			if (menuNumb == 2)
 				return false;
 		}
+
 		if ((game.UserStep(window) == 1)) {
 			game.GameRes(window);
 			game.GenerateRandom();

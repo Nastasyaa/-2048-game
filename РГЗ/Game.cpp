@@ -284,7 +284,6 @@ void Game::GameRes(sf::RenderWindow &window) {
 	}
 	
 		Score();
-		
 		window.draw(scoretxt);
 		window.draw(rec);
 		window.draw(score);
